@@ -1,12 +1,12 @@
 {
-  "version": "2.0.1",
+  "version": "2.0.2",
   "name": "@lukehansell/next-mdx-blog",
   "description": "next-mdx-blog",
   "main": "dist/index.js",
   "source": "src/index.js",
   "author": {
-    "name": "Andrew Lisowski",
-    "email": "lisowski54@gmail.com"
+    "name": "Luke Hansell",
+    "email": "lukehansell@gmail.com"
   },
   "files": [
     "dist/"
@@ -19,8 +19,7 @@
     "build": "babel src -d dist --ignore '**/*.test.js'",
     "test": "jest",
     "lint": "xo",
-    "prerelease": "npm run build",
-    "release": "github-semantic-version --bump --changelog --push --publish"
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
