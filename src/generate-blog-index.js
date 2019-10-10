@@ -34,40 +34,57 @@ function requireMDXFileSync(path) {
   return requireMDXSync(mdxSrc, path);
 }
 
+function convertFilePathToUrlPath(path) {
+  return filePath
+    .replace(/\\/, '/')
+    .replace(/^pages/, '')
+    .replace(/\.mdx?$/, '');
+}
+
 function readPostMetadata(filePath) {
   const mod = requireMDXFileSync(filePath);
   const { meta } = mod;
 
   return {
+    ...meta,
     filePath,
-    urlPath: filePath
-      .replace(/\\/, '/')
-      .replace(/^pages/, '')
-      .replace(/\.mdx?$/, ''),
+    urlPath: convertFilePathToUrlPath(filePath),
     title: meta.title || path.basename(filePath),
     publishDate: new Date(meta.publishDate)
   };
 }
 
-function generateRSS(posts) {
-  const siteUrl = 'https://hipstersmoothie.com';
+function generateRSS(posts, options) {
+  const { siteUrl, title } = options;
   const feed = new RSS({
-    title: "Andrew Lisowski's blog",
+    title,
     // eslint-disable-next-line camelcase
     site_url: siteUrl
   });
 
-  posts.forEach(post => {
+  posts.forEach(({ title, urlPath, publishDate: date }) => {
     feed.item({
-      title: post.title,
-      guid: post.urlPath,
-      url: siteUrl + post.urlPath,
-      date: post.publishDate
+      title,
+      guid: urlPath,
+      url: siteUrl + urlPath,
+      date
     });
   });
 
   return feed.xml({ indent: true });
 }
+
+const buildPostAuthorDetails = ({ author, authorLink, avatar }) => ({
+  author,
+  authorLink,
+  avatar
+});
+
+const buildPostData = options => post => ({
+  ...buildPostAuthorDetails(options),
+  ...buildPostAuthorDetails(post),
+  urlPath: path.join(options.assetPrefix || '/', post.urlPath)
+});
 
 module.exports = async function(options) {
   const postPaths = await glob('pages/**/*.mdx');
@@ -75,14 +92,7 @@ module.exports = async function(options) {
 
   const posts = postPaths
     .map(readPostMetadata)
-    .map(post => {
-      post.author = post.author || options.author;
-      post.authorLink = post.authorLink || options.authorLink;
-      post.avatar = post.avatar || options.avatar;
-      post.urlPath = path.join(options.assetPrefix || '/', post.urlPath);
-
-      return post;
-    })
+    .map(buildPostData(options))
     .filter(post => post.publishDate <= now)
     .sort((a, b) => b.publishDate - a.publishDate);
 
