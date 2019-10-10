@@ -107,8 +107,13 @@ module.exports = async function(options) {
 
   console.info(`Saved ${posts.length} posts in ${exportPath}`);
 
+  const { siteTitle, siteUrl } = options;
+
   const rssPath = 'static/rss-feed.xml';
-  const rssXML = generateRSS(posts);
+  const rssXML = generateRSS(posts, {
+    siteUrl,
+    title: siteTitle
+  });
 
   fs.writeFileSync(rssPath, rssXML);
 
