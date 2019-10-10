@@ -1,6 +1,6 @@
 {
   "version": "2.0.1",
-  "name": "next-mdx-blog",
+  "name": "@lukehansell/next-mdx-blog",
   "description": "next-mdx-blog",
   "main": "dist/index.js",
   "source": "src/index.js",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hipstersmoothie/next-mdx-blog"
+    "url": "https://github.com/lukehansell/next-mdx-blog"
   },
   "scripts": {
     "build": "babel src -d dist --ignore '**/*.test.js'",
