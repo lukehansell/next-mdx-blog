@@ -35,7 +35,7 @@ function requireMDXFileSync(path) {
 }
 
 function convertFilePathToUrlPath(path) {
-  return filePath
+  return path
     .replace(/\\/, '/')
     .replace(/^pages/, '')
     .replace(/\.mdx?$/, '');
