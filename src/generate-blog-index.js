@@ -8,6 +8,8 @@ const g = require("glob");
 const mdx = require("@mdx-js/mdx");
 const babel = require("@babel/core");
 
+const dateFormat = require("dateformat");
+
 const glob = promisify(g);
 
 function requireFromStringSync(src, filename) {
@@ -90,12 +92,7 @@ const buildPostData = options => ({
   };
 };
 
-const getYear = date => new Date(date).getFullYear();
-const getMonth = date => new Date(date).getMonth();
-const getDay = date => new Date(date).getDate();
-
-const getFormattedDate = date =>
-  `${getYear(date)}-${getMonth(date)}-${getDay(date)}`;
+const getFormattedDate = date => dateFormat(date, "yyyy-mm-dd");
 
 const buildSiteMapPage = (siteUrl, { urlPath, publishDate }) => {
   return `

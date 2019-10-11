@@ -1,5 +1,5 @@
 {
-  "version": "2.1.2",
+  "version": "2.1.3",
   "name": "@lukehansell/next-mdx-blog",
   "description": "next-mdx-blog",
   "main": "src/index.js",
@@ -33,6 +33,7 @@
     "@babel/preset-react": "^7.6.3",
     "@mdx-js/mdx": "^0.15.5",
     "bulma-pagination-react": "^0.0.3",
+    "dateformat": "^3.0.3",
     "dayjs": "^1.7.7",
     "glob": "^7.1.3",
     "next": "^7.0.2",
