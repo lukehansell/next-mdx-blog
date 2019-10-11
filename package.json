@@ -2,7 +2,7 @@
   "version": "2.0.4",
   "name": "@lukehansell/next-mdx-blog",
   "description": "next-mdx-blog",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "source": "src/index.js",
   "author": {
     "name": "Luke Hansell",
@@ -16,83 +16,31 @@
     "url": "https://github.com/lukehansell/next-mdx-blog"
   },
   "scripts": {
-    "build": "babel src -d dist --ignore '**/*.test.js'",
     "test": "jest",
-    "lint": "xo",
-    "prepare": "npm run build"
+    "lint": "xo"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
-    "@babel/plugin-transform-regenerator": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.1.2",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-xo-react": "^0.17.0",
     "eslint-plugin-react": "^7.11.1",
     "github-semantic-version": "^7.6.0",
-    "husky": "^1.1.2",
     "jest": "^23.6.0",
-    "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
     "xo": "^0.23.0"
   },
-  "peerDepedencies": {
-    "styled-jsx": "3.1.0"
-  },
   "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-react": "^7.6.3",
     "@mdx-js/mdx": "^0.15.5",
     "bulma-pagination-react": "^0.0.3",
     "dayjs": "^1.7.7",
     "glob": "^7.1.3",
     "next": "^7.0.2",
     "prop-types": "^15.6.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "rss": "^1.2.2",
-    "styled-jsx": "^3.1.0"
-  },
-  "prettier": {
-    "singleQuote": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "collectCoverage": true,
-    "coverageDirectory": "./coverage",
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "html"
-    ],
-    "collectCoverageFrom": [
-      "**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
-    ],
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
+    "rss": "^1.2.2"
   },
   "xo": {
     "parser": "babel-eslint",
