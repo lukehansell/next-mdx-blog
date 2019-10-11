@@ -9,7 +9,7 @@
     "email": "lukehansell@gmail.com"
   },
   "files": [
-    "dist/"
+    "src/"
   ],
   "repository": {
     "type": "git",
