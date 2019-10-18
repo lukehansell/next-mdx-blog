@@ -1,5 +1,5 @@
 {
-  "version": "2.1.3",
+  "version": "3.0.0",
   "name": "@lukehansell/next-mdx-blog",
   "description": "next-mdx-blog",
   "main": "src/index.js",
@@ -14,17 +14,20 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "xo"
+    "lint": "eslint src/**/*.js"
   },
   "devDependencies": {
-    "eslint": "^5.7.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-xo-react": "^0.17.0",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
     "github-semantic-version": "^7.6.0",
     "jest": "^23.6.0",
     "prettier": "^1.14.3",
-    "xo": "^0.23.0"
+    "xml2js": "^0.4.22"
   },
   "dependencies": {
     "@babel/core": "^7.6.4",
@@ -39,20 +42,6 @@
     "next": "^7.0.2",
     "prop-types": "^15.6.2",
     "rss": "^1.2.2"
-  },
-  "xo": {
-    "parser": "babel-eslint",
-    "env": [
-      "dom",
-      "jest"
-    ],
-    "extends": [
-      "prettier",
-      "xo-react/space"
-    ],
-    "rules": {
-      "react/jsx-tag-spacing": "always"
-    }
   },
   "license": "MIT"
 }
