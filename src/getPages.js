@@ -12,7 +12,7 @@ module.exports = async () => {
         .replace('.js', '')
         .replace(/index$/, ''),
     )
-    .filter(page => !page.match(/^_/))
+    .filter(page => !page.match(/^\/_/))
     .map(urlPath => ({
       urlPath,
     }))

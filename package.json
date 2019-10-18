@@ -1,5 +1,5 @@
 {
-  "version": "3.0.2",
+  "version": "3.0.3",
   "name": "@lukehansell/next-mdx-blog",
   "description": "next-mdx-blog",
   "main": "src/index.js",
