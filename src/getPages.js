@@ -8,7 +8,7 @@ module.exports = async () => {
   return pagePaths
     .map(page =>
       page
-        .replace('pages/', '')
+        .replace('pages', '')
         .replace('.js', '')
         .replace(/index$/, ''),
     )
