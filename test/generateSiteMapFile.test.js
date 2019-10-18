@@ -36,7 +36,7 @@ describe('with pages', () => {
     })([
       {
         title: 'my post',
-        urlPath: 'my-url',
+        urlPath: '/my-url',
         publishDate: '2019-10-11',
       },
     ])

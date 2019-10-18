@@ -4,7 +4,7 @@ const getFormattedDate = date => dateFormat(date, 'yyyy-mm-dd')
 
 const buildSiteMapPage = (siteUrl, { urlPath, publishDate }) => `
     <url>
-        <loc>https://${siteUrl}/${urlPath}</loc>
+        <loc>https://${siteUrl}${urlPath}</loc>
         ${
           publishDate
             ? `<lastmod>${getFormattedDate(publishDate)}</lastmod>`
