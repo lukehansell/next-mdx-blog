@@ -1,12 +1,18 @@
-const fs = require('fs').promises
+const fs = require('fs')
 const getPosts = require('./getPosts')
 const getPages = require('./getPages')
 const generatePostsFile = require('./generatePostsFile')
 const generateRSS = require('./generateRSSFile')
 const generateSiteMap = require('./generateSiteMapFile')
 
-const writeToFile = fileName => content =>
-  fs.writeFile(fileName, content)
+const writeToFile = fileName => content => {
+  return new Promise((res, rej) => {
+    fs.writeFile(fileName, content, err => {
+      if (err) return rej(err)
+      return res(fileName)
+    })
+  })
+}
 
 class BlogPlugin {
   constructor(options) {
