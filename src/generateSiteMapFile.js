@@ -14,10 +14,10 @@ const buildSiteMapPage = (siteUrl, { urlPath, publishDate }) => `
   `
 
 const buildSiteMap = siteUrl => pages => `
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${pages.map(page => buildSiteMapPage(siteUrl, page))}
-    </urlset>
-  `
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages
+      .map(page => buildSiteMapPage(siteUrl, page))
+      .join('')}</urlset>
+`
 
 module.exports = ({ siteUrl }) => pages =>
   buildSiteMap(siteUrl)(pages)
