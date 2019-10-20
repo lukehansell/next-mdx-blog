@@ -93,6 +93,11 @@ module.exports = withPlugins([withMDX, withBlog], {
 - `url` - Root url for the site
 - `title` - Site's title
 
+##### `/public` folder support
+
+If experimental `public` folder is enabled in the `next.config.js` then the sitemap, rss-feed etc will be written to the `public` folder.
+Otherwise the files will be written to the `static` folder.
+
 ##### Asset Prefix
 
 If you website is being served out of something other than the root domain you might need to add a prefix to your urls. Such as is the case with github pages.

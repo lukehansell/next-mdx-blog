@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const getPosts = require('./getPosts')
 const getPages = require('./getPages')
 const generatePostsFile = require('./generatePostsFile')
@@ -18,8 +19,17 @@ class BlogPlugin {
   constructor(options) {
     this.options = options
 
-    this.writeRSSFile = writeToFile('static/rss-feed.xml')
-    this.writeSiteMapFile = writeToFile('static/sitemap.xml')
+    const rootPath =
+      options.experimental && options.experimental.publicDirectory
+        ? 'public'
+        : 'static'
+
+    this.writeRSSFile = writeToFile(
+      path.join(rootPath, 'rss-feed.xml'),
+    )
+    this.writeSiteMapFile = writeToFile(
+      path.join(rootPath, 'sitemap.xml'),
+    )
     this.writePostsFile = writeToFile('./posts.js')
 
     this.generateRSSForSite = generateRSS({
